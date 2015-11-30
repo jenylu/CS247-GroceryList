@@ -1,6 +1,8 @@
 .completed {
   font-family: 'Montserrat';
   text-align: center;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 h4 {
@@ -14,9 +16,4 @@ nav {
 
 img {
 	width: 200px;
-}
-
-body {
-	margin-left: 15px;
-	margin-right: 15px;
 }
