@@ -1,0 +1,14 @@
+.lead {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+  .lead p {
+    margin-left: 10px;
+    margin-right: 10px; }
+
+img {
+  padding: 25px;
+  padding-right: 40px;
+  padding-left: 30px; }
+
+.splash {
+  margin-top: 20px;
+  margin-bottom: 20px; }
