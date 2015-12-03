@@ -1,8 +1,14 @@
 {{#section 'head'}}
   <title>GCube</title>
   <link type="text/css" rel='stylesheet' href='/css/index.css' />
-
+<!-- bridgeit -->
+  <script type="text/javascript" src="http://api.bridgeit.mobi/bridgeit/bridgeit.js"></script>
 {{/section}}
+
+
+
+<a id='cameraBtn' type="button" 
+    onclick="bridgeit.camera('cameraBtn', 'onAfterPhotoCapture', {postURL:'/upload'});">Take a Photo</a>
 
 <section>   
   <div class="quizimgblock">
@@ -173,4 +179,27 @@
     }
 
   });
+</script>
+
+<script type="text/javascript">
+function onAfterPhotoCapture(event){
+    var id = event.name;
+    var cameraBtn = document.getElementById(id);
+    if (event.preview)  {
+        //show the thumbnail preview
+        var thumbnailElem = document.createElement("img");
+        thumbnailElem.setAttribute("src", event.preview);
+    }
+    if (event.response)  {
+        //show the image
+        //assume the server is sending back the url of the uploaded image
+        var photoURL = event.response; 
+        var imageLink = document.createElement('a');
+        imageLink.setAttribute('href', photoURL);
+        //set the thumbnail img as the link child
+        imageLink.appendChild(thumbnailElem);
+        //append the new link after the camera btn
+        cameraBtn.parentNode.appendChild(imageLink);
+    }
+}
 </script>
