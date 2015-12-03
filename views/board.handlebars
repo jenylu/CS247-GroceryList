@@ -7,8 +7,8 @@
 
 
 
-<a id='cameraBtn' type="button" 
-    onclick="bridgeit.camera('cameraBtn', 'onAfterPhotoCapture', {postURL:'/upload'});">Take a Photo</a>
+<a id='scanBtn' type="button" 
+   onclick="bridgeit.scan('scanBtn', 'onAfterCaptureScan');">Scan a Code</a>
 
 <section>   
   <div class="quizimgblock">
@@ -182,24 +182,12 @@
 </script>
 
 <script type="text/javascript">
-function onAfterPhotoCapture(event){
-    var id = event.name;
-    var cameraBtn = document.getElementById(id);
-    if (event.preview)  {
-        //show the thumbnail preview
-        var thumbnailElem = document.createElement("img");
-        thumbnailElem.setAttribute("src", event.preview);
-    }
-    if (event.response)  {
-        //show the image
-        //assume the server is sending back the url of the uploaded image
-        var photoURL = event.response; 
-        var imageLink = document.createElement('a');
-        imageLink.setAttribute('href', photoURL);
-        //set the thumbnail img as the link child
-        imageLink.appendChild(thumbnailElem);
-        //append the new link after the camera btn
-        cameraBtn.parentNode.appendChild(imageLink);
-    }
+function onAfterCaptureScan(event)  {
+    var text = event.value;
+    var scans = document.getElementById("scans");
+    var row1 = document.createElement('div');
+    row1.setAttribute('class','row');
+    row1.innerHTML = text;
+    scans.insertBefore(row1, scans.firstChild);
 }
 </script>
